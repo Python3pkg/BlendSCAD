@@ -133,7 +133,7 @@ def surface(file, center=False, convexity=1):
 		if val[0] != "#":
 			data.append(row); rows +=1;
 	ins.close()
-	print(("importing surface ",file,": rows=",rows," cols=",cols))
+	print("importing surface ",file,": rows=",rows," cols=",cols)
 	ox = -(cols-1)/2.0 if center else 0;
 	oy = -(rows-1)/2.0 if center else 0;
 	#

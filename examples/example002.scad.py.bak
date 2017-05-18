@@ -12,8 +12,8 @@ import imp; import sys
 rel = ['blendscad','blendscad.math',
 'blendscad.core', 'blendscad.primitives','blendscad.impexp', 'blendscad.shapes']
 for mo in rel:
-	if mo in list(sys.modules.keys()):
-		print(('reloading: '+mo+' -> '+ sys.modules[mo].__file__))
+	if mo in sys.modules.keys():
+		print ('reloading: '+mo+' -> '+ sys.modules[mo].__file__)
 		imp.reload(sys.modules[mo])
 ########################
 
@@ -68,8 +68,8 @@ import bpy; o = bpy.context.scene.objects.active
 color(rands(0,1,3)) # random color last object. to see "FINISH" :-)
 
 
-print(("num vertices: "+str(len(o.data.vertices))))
-print(("num polygons: "+str(len(o.data.polygons))))
+print("num vertices: "+str(len(o.data.vertices)))
+print("num polygons: "+str(len(o.data.polygons)))
 
 
 # print timestamp and finish - sometimes it is easier to see differences in console then :-)

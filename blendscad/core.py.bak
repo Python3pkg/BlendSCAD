@@ -42,7 +42,7 @@ import bpy_types
 
 import sys
 
-from . import math
+import math
 from mathutils import Vector  # using Vector type below...
 
 import blendscad # for "global" variables fn, defColor,...
@@ -101,13 +101,13 @@ def clearAllObjects():
 # list all Blender objects for debugging purposes
 def listAllObjects():
 	for obj in bpy.data.objects:
- 		print((obj.name))	
+ 		print(obj.name)	
 
 
 #########################################3
 ## echo() and str()
 try:
-    import builtins
+    import __builtin__
 except ImportError:
     import builtins as __builtin__ #Python 3.0
 
@@ -116,13 +116,13 @@ except ImportError:
 def echo(*args):
 	sys.stdout.write('ECHO: ')  # like print, but no newline to prefix...
 	for a in args:
-		sys.stdout.write(builtins.str(a))
+		sys.stdout.write(__builtin__.str(a))
 	sys.stdout.write('\n')
 		
 def str(*args):	
 	res=""
 	for a in args:
-		res = res + (builtins.str(a))
+		res = res + (__builtin__.str(a))
 	return res
 
 #tests...		
@@ -171,7 +171,7 @@ def color( rgba=(1.0,1.0,1.0, 0), o=None):
 	if o.draw_type == 'WIRE' or o.draw_type == 'BOUNDS': # 'WIRE' seems to cause probe /w material...
 		return o
 	#print("called color() with:"); print(blendscad.mat)
-	if blendscad.mat.name not in list(o.data.materials.keys()):
+	if blendscad.mat.name not in o.data.materials.keys():
 			#print("setting material to:") ; print(blendscad.mat)
 			if len(o.data.materials)>0:
 				o.data.materials[0]=blendscad.mat
@@ -996,8 +996,8 @@ def projection(o=None,cut=False):
 #	if cut is False:
 #		#blendscad.core.cleanup_object(o=o,removeDoubles=True,subdivide=False, normalsRecalcOut=True)
 #		#blendscad.core.remove_duplicates()		
-	print(("num vertices: "+str(len(o.data.vertices))))
-	print(("num polygons: "+str(len(o.data.polygons))))
+	print("num vertices: "+str(len(o.data.vertices)))
+	print("num polygons: "+str(len(o.data.polygons)))
 	return o	
 
 #o=projection( cut=true, o=translate([0,0,-5], rotate([45,0,45], cube(20))));

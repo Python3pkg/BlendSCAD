@@ -10,7 +10,7 @@ def braces_decode(input, errors='strict'):
 	current_depth = 0
 	indent_width = 4
 	#
-	if not input: return ('', 0)
+	if not input: return (u'', 0)
 	length = len(input)
 	# Deal with chunked reading, where we don't get
 	# data containing a complete line of source
@@ -33,7 +33,7 @@ def braces_decode(input, errors='strict'):
 			current_depth -= indent_width
 		else:
 			acc.append(' ' * current_depth + l)
-	return ('\n'.join(acc)+'\n', length)
+	return (u'\n'.join(acc)+'\n', length)
 
 def convertOpenSCAD(filenameSCAD):
 	import re

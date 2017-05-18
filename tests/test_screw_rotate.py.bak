@@ -20,8 +20,8 @@ import imp; import sys
 rel = ['blendscad','blendscad.math',
 'blendscad.core', 'blendscad.primitives','blendscad.impexp', 'blendscad.shapes']
 for mo in rel:
-	if mo in list(sys.modules.keys()):
-		print(('reloading: '+mo+' -> '+ sys.modules[mo].__file__))
+	if mo in sys.modules.keys():
+		print ('reloading: '+mo+' -> '+ sys.modules[mo].__file__)
 		imp.reload(sys.modules[mo])
 ########################
 
@@ -124,8 +124,8 @@ o= blendscad.core.screw_extrude(10,2,o)
 #o=blendscad.core.dissolve(o)
 ##########################################################################
 
-print(("num vertices: "+str(len(o.data.vertices))))
-print(("num polygons: "+str(len(o.data.polygons))))
+print("num vertices: "+str(len(o.data.vertices)))
+print("num polygons: "+str(len(o.data.polygons)))
 # blendscad.core.dissolve(o)
 # print("num vertices: "+str(len(o.data.vertices)))
 # print("num polygons: "+str(len(o.data.polygons)))

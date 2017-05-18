@@ -79,7 +79,7 @@ def initns(nsdict):
 	import blendscad.impexp
 	#import blendscad.shapes
 	try:
-		import builtins
+		import __builtin__
 	except ImportError:
 		import builtins as __builtin__ #Python 3.0
 	

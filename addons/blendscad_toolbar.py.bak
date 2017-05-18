@@ -73,8 +73,8 @@ import imp; import sys
 rel = ['blendscad','blendscad.math',
 'blendscad.core', 'blendscad.primitives','blendscad.impexp', 'blendscad.shapes']
 for mo in rel:
-	if mo in list(sys.modules.keys()):
-		print(('reloading: '+mo+' -> '+ sys.modules[mo].__file__))
+	if mo in sys.modules.keys():
+		print ('reloading: '+mo+' -> '+ sys.modules[mo].__file__)
 		imp.reload(sys.modules[mo])
 ########################
 

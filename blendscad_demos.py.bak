@@ -20,8 +20,8 @@ import imp; import sys
 rel = ['blendscad','blendscad.math',
 'blendscad.core', 'blendscad.primitives','blendscad.impexp', 'blendscad.shapes']
 for mo in rel:
-	if mo in list(sys.modules.keys()):
-		print(('reloading: '+mo+' -> '+ sys.modules[mo].__file__))
+	if mo in sys.modules.keys():
+		print ('reloading: '+mo+' -> '+ sys.modules[mo].__file__)
 		imp.reload(sys.modules[mo])
 ########################
 
@@ -41,7 +41,7 @@ echo ("BEGIN", st)
 
 ## List loaded blendscad related (sub)modules
 def list_modules():
-	for mod in list(sys.modules.values()):
+	for mod in sys.modules.values():
 		str1 = "|"+str(mod) + "|"
 		#if str1.startswith("<module 'blendscad") is True:
 		if str1.find("blendscad") >= 0:
@@ -481,7 +481,7 @@ def makeFtBlock():
 def TODO_exportDXF():
 	filePathDXF = "O:/BlenderStuff/test2.dxf"
 	import os
-	print(( os.getcwd()))
+	print ( os.getcwd())
 	import io_export_dxf.export_dxf
 	#
 	settings = {'onlySelected': False , 'verbose': True, 'projectionThrough': None , 'entitylayer_from':'obj.name'
@@ -513,14 +513,14 @@ def TODO_exportDXF():
 
 ##########################################################################
 
-print(("num vertices: "+str(len(o.data.vertices))))
-print(("num polygons: "+str(len(o.data.polygons))))
+print("num vertices: "+str(len(o.data.vertices)))
+print("num polygons: "+str(len(o.data.polygons)))
 blendscad.core.dissolve(o)
-print(("num vertices: "+str(len(o.data.vertices))))
-print(("num polygons: "+str(len(o.data.polygons))))
+print("num vertices: "+str(len(o.data.vertices)))
+print("num polygons: "+str(len(o.data.polygons)))
 blendscad.core.decimate(o)
-print(("num vertices: "+str(len(o.data.vertices))))
-print(("num polygons: "+str(len(o.data.polygons))))
+print("num vertices: "+str(len(o.data.vertices)))
+print("num polygons: "+str(len(o.data.polygons)))
 #blendscad.core.remesh(o)
 
 
